@@ -1,0 +1,5 @@
+.idea
+.env
+storage
+src/composer.lock
+src/vendor

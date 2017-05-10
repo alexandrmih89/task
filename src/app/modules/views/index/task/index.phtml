@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-sm-12">
+    <form method="get" class="form-inline" action="/tasks">
+        <div class="form-group">
+            Date from
+            <div class="input-daterange input-group" id="date-range">
+                <input type="text" class="form-control" name="from" value="<?=date('m/d/Y', time() - 24 * 3600)?>" />
+                <span class="input-group-addon bg-primary b-0 text-white">to</span>
+                <input type="text" class="form-control" name="to" value="<?=date('m/d/Y', time())?>" />
+            </div>
+
+        </div>
+        <?php if (!empty($projects)) { ?>
+        Project
+        <select class="form-control" name="project">
+            <?php foreach ($projects as $project) { ?>
+                <option value="<?=$project->tsk_project ?>"><?=$project->tsk_project ?></option>
+            <?php } ?>
+        </select>
+        <?php } ?>
+        <?php if (!empty($types)) { ?>
+        Type
+        <select class="form-control" name="type">
+            <?php foreach ($types as $type) { ?>
+                <option value="<?=$type->tsk_type ?>"><?=$type->tsk_type ?></option>
+            <?php } ?>
+        </select>
+        <?php } ?>
+        <input type="submit" class="btn btn-md btn-primary" value="Filter" />
+    </form>
+    </div>
+</div>
+
+
+<div class="row" style="margin-top: 15px">
+    <div class="col-sm-12">
+        <?php if (!empty($tasks) and (count($tasks) > 0)) { ?>
+            <?php foreach ($tasks as $task) { ?>
+                <div class="card-box">
+                    <h4 class="m-t-0 m-b-20 header-title"><b><?=$task->getTskName()?> (<?=$task->getTskType()?>)</b></h4>
+                    <div><?=$task->getTskDescription()?></div>
+                    <div><?=$task->getTskLink()?></div>
+                    <div>
+                        Project: <?=$task->getTskProject()?>
+                    </div>
+                    <div>
+                        Start time: <?=$task->getTskTimeStart()?>
+                    </div>
+                    <div>
+                        End time: <?=$task->getTskTimeEnd()?>
+                    </div>
+                    <div>
+                        Work time: <?=$task->getTskWorkTime()?> (minutes)
+                    </div>
+
+                </div>
+            <?php } ?>
+        <?php } else { ?>
+            <div class="card-box">
+                Nothing found
+            </div>
+        <?php } ?>
+    </div>
+</div>

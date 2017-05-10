@@ -1,0 +1,118 @@
+<form id="task_form"
+      action="/add"
+      method="post"
+      name="form"
+      class="form-horizontal">
+    <div class="form-group">
+        <?php $this->flashSession->output();?>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Task name<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+            <input type="text"
+                   maxlength="255"
+                   name="tsk_name"
+                   class="form-control"
+                   placeholder="Task name"
+                   required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Description<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+            <textarea name="tsk_description"
+                      maxlength="255"
+                      class="form-control"
+                      placeholder="Description"
+                      rows="6"
+                      required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Project<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+            <input type="text"
+                   maxlength="255"
+                   name="tsk_project"
+                   class="form-control"
+                   placeholder="Project"
+                   required="required">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Type<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+            <input type="text"
+                   maxlength="255"
+                   name="tsk_type"
+                   class="form-control"
+                   placeholder="Type"
+                   required="required">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Link<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+            <input type="text"
+                   maxlength="255"
+                   name="tsk_link"
+                   class="form-control"
+                   placeholder="Link"
+                   required="required">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Date<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="mm/dd/yyyy"
+                       value="<?=date('m/d/Y', time())?>"
+                       name="tsk_date"
+                       id="datepicker">
+                <span class="input-group-addon bg-primary b-0 text-white"><i class="ion-calendar"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Task start time<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+            <div class="input-group bootstrap-timepicker timepicker">
+                <input id="timepicker"
+                       type="text"
+                       class="form-control input-small"
+                       name="tsk_time"
+                       placeholder="hh:mm"
+                       value="<?=date('H:i', time())?>"/>
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-time"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 cst_sm control-label">Work time<span class="text-danger">*</span><br /><span id="sm">(minutes)</span></label>
+        <div class="col-sm-6">
+            <input type="text"
+                   id="touchspin"
+                   value="20"
+                   maxlength="255"
+                   name="tsk_work_time"
+                   class="form-control"
+                   placeholder="20"
+                   required="required">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-6 text-right">
+            <input type="submit" class="btn btn-success"  value="Отправить" />
+        </div>
+    </div>
+</form>

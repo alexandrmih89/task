@@ -1,0 +1,6 @@
+#m  h   d   m   d   user      command
+SHELL=/bin/bash
+10   1   *   *   *  /bin/bash /src/shell/backup/backup.sh > /dev/null 2>&1
+*/1   *   *   *   *  /usr/local/bin/php /src/app/cli.php emails dispatch > /dev/null 2>&1
+
+# An empty line is required at the end of this file for a valid cron file.
